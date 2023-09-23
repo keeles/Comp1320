@@ -13,4 +13,4 @@ const day = readline.question("Please enter a date. ");
     }
 
 getDayOfTheWeekForUserDate();
-// labTwo.makeCalendar(2022); 
+labTwo.makeCalendar(2022); 
