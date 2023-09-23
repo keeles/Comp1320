@@ -1,3 +1,34 @@
+function checkInput(year,month,day) {
+
+    switch (month) {
+        case "January":
+        case "February":
+        case "March":
+        case "April":
+        case "May":
+        case "June":
+        case "July":
+        case "August":
+        case "September":
+        case "October":
+        case "November":
+        case "December":
+
+    if (year < 1600 || year > 2200) {
+                return(false);
+    } else if (day < 1 || day > 31) {
+                return(false);
+    } else if (isLeapYear(year,month) == 1 && day > 29 && month == "February") {
+                return(false);
+    } else if (day > 28 && month == "February" && isLeapYear(year,month) == 0) {
+                return(false);
+    } else {
+        return (true);
+    } 
+
+}
+}
+
 function findMonthCode(month) {
 
     if (month == "January") {
@@ -75,6 +106,8 @@ function findYearCode(year) {
 
 function dayOfTheWeek(year, month, day){
 
+    const validDate = checkInput(year,month,day);
+    if (validDate == true) {
     const yearString = year.toString(); 
     const lastTwoDigitsYear = yearString.slice(-2);
     const twoDigitsDivide = parseInt(lastTwoDigitsYear / 12);
@@ -88,6 +121,12 @@ function dayOfTheWeek(year, month, day){
     
     return(month, day, year, weekDay);
     }
+    else {
+        console.log("Please enter a valid date");
+        weekDay = "day that does not exist";
+        return(month, day, year, weekDay);
+    }
+}
 
 function makeCalendar(year) {
 
